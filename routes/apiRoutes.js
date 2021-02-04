@@ -10,6 +10,7 @@ module.exports = function (app) {
   });
 //   app.post("/api/notes", (req, res) => {
 //     var newNote = {
+//       id: id,
 //       title: req.body.title,
 //       text: req.body.text,
 //     };
@@ -22,7 +23,10 @@ module.exports = function (app) {
 //       });
 //     });
 //   });
-//   app.delete("/api/notes", (req, res) => {
-//     res.json(savedNotes);
-//   });
+  app.delete("/api/notes/:id", (req, res) => {
+    var notes = JSON.parse(fs.readFileSync("../db/db.json", "utf-8"));
+    var newNote = notes.filter(note => note.id !== req.params.id);
+    fs.writeFileSync("../db/db.json", JSON.stringify(newNote));
+    res.json(true);
+  });
 };
