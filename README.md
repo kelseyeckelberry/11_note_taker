@@ -1,7 +1,7 @@
 # Unit 11 Homework: Note Taker
 
 ## Description
-This workout tracker app does just that--it tracks the user's workouts! Enter the type of exercise, workout name, and duration (all required) and also add on the number of reps, sets, and/or distance traveled (optional). The user is able to log multiple exercises in a workout on a given day. This application required creating a Mongo database with a Mongoose schema and handling routes with Express.
+This note taker application can be used to write, save, and delete notes. This application uses an express backend and saves and retrieves note data from a JSON file.
 
 ## Table of Contents
 * [Installation](#installation)
