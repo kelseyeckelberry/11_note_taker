@@ -17,7 +17,7 @@ module.exports = function (app) {
       newNote = JSON.parse(newNote);
       savedNote.push({ ...newNote, id: id });
       savedNote = JSON.stringify(savedNote);
-      fs.writeFile('../db/db.json', savedNote, (err, data) => {
+      fs.writeFile('./db/db.json', savedNote, (err, data) => {
         res.sendStatus(200);
       });
     });
@@ -25,14 +25,11 @@ module.exports = function (app) {
 
   app.delete('/api/notes/:id', (req, res) => {
     let id = req.params.id;
-    console.log(id);
     fs.readFile('./db/db.json', 'utf8', (err, data) => {
       if (err) throw err;
       let deleteNote = JSON.parse(data);
-      console.log(deleteNote);
       deleteNote = deleteNote.filter((notes) => notes.id != id);
-      console.log(deleteNote);
-      deleteNote - JSON.stringify(deleteNote);
+      deleteNote = JSON.stringify(deleteNote);
       fs.writeFile('./db/db.json', deleteNote, (err, data) => {
         if (err) throw err;
         res.send(deleteNote);
